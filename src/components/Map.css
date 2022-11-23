@@ -3,3 +3,19 @@
     height: 100vh;
     
 }
+
+.wrapper {
+    position: relative;
+}
+
+.highest {
+    position: absolute;
+    background-color: #fff;
+    width: 185px;
+    height: 55px;
+    right: 70px;
+    top: 10px;
+    z-index: 90;
+    border-radius: 2px;
+    padding: 5px;
+}

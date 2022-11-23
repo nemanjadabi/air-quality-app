@@ -17,6 +17,7 @@ const markerColor = {
 const Map = () => {
   const [devData, setDevData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [excellent, setExcellent] = useState(null)
 
   useEffect(() => {
     const devicesData = [];
@@ -52,6 +53,8 @@ const Map = () => {
           });
         }
       }
+      const firstExcelent = devicesData.find(item => item.airQuality === 'Excellent')
+      setExcellent(firstExcelent)
       setDevData(devicesData);
       setLoading(false);
     };
@@ -63,8 +66,13 @@ const Map = () => {
   };
 
   return (
-    <>
+    <div className="wrapper">
       {loading && <Spinner />}
+      {!loading && (
+        <div className="highest">
+          <p1><strong>Best air quality is at:</strong> { excellent.locationLat } { excellent.locationLng }</p1>
+        </div>
+      )}
       <LoadScript googleMapsApiKey="AIzaSyA_X65tYFozMVL5ORcQjmkYH08MSBn0H4E">
         <GoogleMap
           zoom={13}
@@ -92,7 +100,7 @@ const Map = () => {
           ))}
         </GoogleMap>
       </LoadScript>
-    </>
+    </div>
   );
 };
 
