@@ -1,3 +1,5 @@
+
+
 {
   "name": "air-quality",
   "version": "0.1.0",
@@ -12,7 +14,12 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  
+  "homepage": "https://nemanjadabi.github.io/air-quality-app",
+  
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
