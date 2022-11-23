@@ -4,10 +4,10 @@ import "./Map.css";
 import Spinner from "./Spinner";
 
 const markerColor = {
-  "je izvanredan": "#6ab858",
-  Excellent: "#6ab858",
-  Good: "#1fc1de",
-  Dobar: "#1fc1de",
+  "je izvanredan": "#47dfaa",
+  Excellent: "#47dfaa",
+  Good: "#29b4e3",
+  Dobar: "#29b4e3",
   Acceptable: "#f2f26d",
   Moderate: "#f2f26d",
   Polluted: "#8c3998",
@@ -17,7 +17,7 @@ const markerColor = {
 const Map = () => {
   const [devData, setDevData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [excellent, setExcellent] = useState(null)
+  const [lowestPm, setLowestPm] = useState(null);
 
   useEffect(() => {
     const devicesData = [];
@@ -47,14 +47,17 @@ const Map = () => {
         const data = await response.json();
         if (data["air-quality"]?.value && data.location?.value) {
           devicesData.push({
+            pm10: data.pm10.value,
             airQuality: data["air-quality"].value,
             locationLat: data.location.value.latitude,
             locationLng: data.location.value.longitude,
           });
         }
       }
-      const firstExcelent = devicesData.find(item => item.airQuality === 'Excellent')
-      setExcellent(firstExcelent)
+      const lowestPm10 = devicesData.reduce((pValue, cValue) =>
+        pValue.pm10 <= cValue.pm10 ? pValue : cValue
+      );
+      setLowestPm(lowestPm10);
       setDevData(devicesData);
       setLoading(false);
     };
@@ -70,7 +73,10 @@ const Map = () => {
       {loading && <Spinner />}
       {!loading && (
         <div className="highest">
-          <p1><strong>Best air quality is at:</strong> { excellent.locationLat } { excellent.locationLng }</p1>
+          <p className="text">
+            <strong>Best air quality is at:</strong> {lowestPm.locationLat}{" "}
+            {lowestPm.locationLng}
+          </p>
         </div>
       )}
       <LoadScript googleMapsApiKey="AIzaSyA_X65tYFozMVL5ORcQjmkYH08MSBn0H4E">
@@ -88,7 +94,7 @@ const Map = () => {
                 strokeOpacity: 1,
                 strokeWeight: 2,
                 fillColor: setMarkerColor(item.airQuality),
-                fillOpacity: 0.8,
+                fillOpacity: 0.9,
                 clickable: false,
                 draggable: false,
                 editable: false,
