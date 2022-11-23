@@ -12,7 +12,6 @@ const markerColor = {
   Moderate: "#f2f26d",
   Polluted: "#8c3998",
   "Very Polluted": "#db0456",
-  // aaaaa: 'sfdsds'
 };
 
 const Map = () => {
