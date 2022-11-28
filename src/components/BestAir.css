@@ -1,0 +1,19 @@
+.highest {
+    position: absolute;
+    background-color: #fff;
+    width: 158px;
+    height: 58px;
+    left: 10px;
+    top: 60px;
+    z-index: 90;
+    border-radius: 2px;
+    padding: 5px;
+
+}
+
+
+
+.text {
+    margin: 0px;
+    font-size: 15px;
+}
