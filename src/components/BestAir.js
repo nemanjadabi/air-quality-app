@@ -1,16 +1,15 @@
 import "./BestAir.css";
-import { useState } from 'react'
-
+import { useState } from "react";
 
 const BestAir = (props) => {
-const[bestAddress, setBestAddress] = useState('')
+  const [bestAddress, setBestAddress] = useState("");
   fetch(
     `https://maps.googleapis.com/maps/api/geocode/json?latlng=${props.latitude},${props.longitude}&key=${props.API_key}`
-  ).then(response => response.json()).then(data => {
-    console.log(data);
-    setBestAddress(data.results[0]["formatted_address"])
-    console.log(bestAddress);
-  });
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      setBestAddress(data.results[0]["formatted_address"]);
+    });
   return (
     <div className="highest">
       <p className="text">

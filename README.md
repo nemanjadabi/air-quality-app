@@ -1,6 +1,6 @@
-Visit App on: https://nemanjadabi.github.io/air-quality-app/
+##Visit App on: https://nemanjadabi.github.io/air-quality-app/
 
-for starting app locally 
+##for starting app locally 
 clone repositorium 
-npm install
-npm run dev
+run `npm install`
+run `npm run dev`

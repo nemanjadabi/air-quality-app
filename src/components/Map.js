@@ -3,7 +3,7 @@ import { GoogleMap, Circle, LoadScript } from "@react-google-maps/api";
 import "./Map.css";
 import Spinner from "./Spinner";
 import BestAir from "./BestAir";
-
+import Legend from "./Legend";
 
 const markerColor = {
   "je izvanredan": "#47dfaa",
@@ -16,7 +16,7 @@ const markerColor = {
   "Very Polluted": "#db0456",
 };
 
-const API_key = "AIzaSyA_X65tYFozMVL5ORcQjmkYH08MSBn0H4E"
+const API_key = "AIzaSyA_X65tYFozMVL5ORcQjmkYH08MSBn0H4E";
 
 const Map = () => {
   const [devData, setDevData] = useState([]);
@@ -99,8 +99,13 @@ const Map = () => {
     <div className="wrapper">
       {loading && <Spinner />}
       {!loading && (
-        <BestAir latitude={lowestPm.locationLat} longitude={lowestPm.locationLng} API_key={API_key}/>
+        <BestAir
+          latitude={lowestPm.locationLat}
+          longitude={lowestPm.locationLng}
+          API_key={API_key}
+        />
       )}
+      {!loading && <Legend />}
       <LoadScript googleMapsApiKey={API_key}>
         <GoogleMap
           zoom={13}
