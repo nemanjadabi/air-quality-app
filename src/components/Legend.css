@@ -8,14 +8,11 @@
     z-index: 90;
     border-radius: 2px;
     padding: 5px;
+    list-style-type: none;
 }
 
-
-
-
-.item_one {
+.item {
      margin-top: 5px;
-    background-color: #47dfaa;
     border-color: white;
     border-radius: 50%;
     border-width: 5px;
@@ -23,56 +20,11 @@
     width: 25px;
     line-height: 25px;
   }
-
-  .item_two {
-    margin-top: 5px;
-    background-color:#29b4e3;
-    border-color: white;
-    border-radius: 50%;
-    border-width: 5px;
-    height: 25px;
-    width: 25px;
-    line-height: 25px;
-  }
-
-  .item_three {
-    margin-top: 5px;
-    background-color: #f2f26d;
-    border-color: white;
-    border-radius: 50%;
-    border-width: 5px;
-    height: 25px;
-    width: 25px;
-    line-height: 25px;
-  }
-
-  .item_four {
-    margin-top: 5px;
-    background-color: #8c3998;
-    border-color: white;
-    border-radius: 50%;
-    border-width: 5px;
-    height: 25px;
-    width: 25px;
-    line-height: 25px;
-  }
-
-  .item_five {
-    margin-top: 5px;
-    background-color: #db0456;
-    border-color: white;
-    border-radius: 50%;
-    border-width: 5px;
-    height: 25px;
-    width: 25px;
-    line-height: 25px;
-  }
-
-
 
 
   span {
     margin-left: 35px;
     display: inline;
+    white-space: pre;
 
   }
