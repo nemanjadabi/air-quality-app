@@ -1,33 +1,16 @@
 import "./Legend.css";
-const markerColor = {
-  Excellent: "#47dfaa",
-  Good: "#29b4e3",
-  Accaptable: "#f2f26d",
-  Polluted: "#8c3998",
-  "Very Polluted": "#db0456",
-};
+import colors from "../colors";
 
-const Legend = () => {
+const Legend = (props) => {
   return (
     <ul className="legend">
-      <li className="item" style={{ backgroundColor: markerColor.Excellent }}>
-        <span>Excellent</span>
-      </li>
-      <li className="item" style={{ backgroundColor: markerColor.Good }}>
-        <span>Good</span>
-      </li>
-      <li className="item" style={{ backgroundColor: markerColor.Accaptable }}>
-        <span>Acceptable</span>
-      </li>
-      <li className="item" style={{ backgroundColor: markerColor.Polluted }}>
-        <span>Polluted</span>
-      </li>
-      <li
-        className="item"
-        style={{ backgroundColor: markerColor["Very Polluted"] }}
-      >
-        <span>Very Polluted</span>
-      </li>
+      {Object.entries(colors).map((item) => {
+        return (
+          <li className="item" style={{ backgroundColor: item[1] }} key={item[0]}>
+            <span>{item[0] === 'VeryPolluted' ? 'Very Polluted' : item[0]}</span>
+          </li>
+        );
+      })}
     </ul>
   );
 };

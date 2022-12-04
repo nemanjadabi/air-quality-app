@@ -1,15 +1,19 @@
 import "./BestAir.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import googleMapsApi from "./../service/googleMapsApi";
 
 const BestAir = (props) => {
   const [bestAddress, setBestAddress] = useState("");
-  fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${props.latitude},${props.longitude}&key=${props.API_key}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
+
+  useEffect(() => {
+    const fetchAddress = async () => {
+      const data = await googleMapsApi.fetchLocation(props.location);
+
       setBestAddress(data.results[0]["formatted_address"]);
-    });
+    };
+    fetchAddress();
+  }, [props.location]);
+
   return (
     <div className="highest">
       <p className="text">
