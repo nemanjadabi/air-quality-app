@@ -17,25 +17,34 @@ function App() {
     const fetchData = async () => {
       const data = await aTT.fetchAllDevices();
 
-      for (const item of data.items) {
-        const data = await aTT.fetchDeviceState(item.id);
-        if (data.airQuality && data.location) {
-          devicesData.push({
-            id: item.id,
-            pm10: data.pm10,
-            airQuality: data.airQuality,
-            location: data.location,
-          });
-        }
-      }
+      Promise.allSettled(
+        data.items.map((item) => {
+          return aTT.fetchDeviceState(item.id);
+        })
+      ).then((responses) => {
+        responses.forEach((response, index) => {
+          if (
+            response.status === "fulfilled" &&
+            response.value.pm10 &&
+            response.value.location &&
+            response.value.airQuality
+          ) {
+            devicesData.push({
+              id: index,
+              pm10: response.value.pm10,
+              airQuality: response.value.airQuality,
+              location: response.value.location,
+            });
+          }
+        });
+        const lowestPm10 = devicesData.reduce((pValue, cValue) =>
+          pValue["pm10"] <= cValue["pm10"] ? pValue : cValue
+        );
 
-      const lowestPm10 = devicesData.reduce((pValue, cValue) =>
-        pValue["pm10"] <= cValue["pm10"] ? pValue : cValue
-      );
-
-      setDevData(devicesData);
-      setLoading(false);
-      setLowestPm(lowestPm10);
+        setDevData(devicesData);
+        setLoading(false);
+        setLowestPm(lowestPm10);
+      });
     };
     fetchData();
   }, []);
