@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/air-quality-app/static/css/main.85e260a9.css",
-    "main.js": "/air-quality-app/static/js/main.5c2f4c5e.js",
+    "main.js": "/air-quality-app/static/js/main.4effa6f4.js",
     "index.html": "/air-quality-app/index.html",
     "main.85e260a9.css.map": "/air-quality-app/static/css/main.85e260a9.css.map",
-    "main.5c2f4c5e.js.map": "/air-quality-app/static/js/main.5c2f4c5e.js.map"
+    "main.4effa6f4.js.map": "/air-quality-app/static/js/main.4effa6f4.js.map"
   },
   "entrypoints": [
     "static/css/main.85e260a9.css",
-    "static/js/main.5c2f4c5e.js"
+    "static/js/main.4effa6f4.js"
   ]
 }
